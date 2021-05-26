@@ -14,9 +14,7 @@ export class InverseFizzBuzzAlgorithm {
     }
 
     private static isCorrectTokenList(fizzBuzzTokens: string[]): fizzBuzzTokens is FizzBuzzToken[] {
-        if(fizzBuzzTokens.length === 0) return false;
-
-        const possibleElements = ["fizz", "buzz", "fizzbuzz"]
+        const possibleElements = ["fizz", "buzz", "fizzbuzz"];
         for (const token of fizzBuzzTokens) {
             if(!possibleElements.includes(token)) {
                 return false
