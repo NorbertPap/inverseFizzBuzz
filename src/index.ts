@@ -1,3 +1,4 @@
 import {InverseFizzBuzzAlgorithm} from "./InverseFizzBuzzAlgorithm";
 
-console.log(new InverseFizzBuzzAlgorithm("fizz buzz").execute());
+const input = "fizz buzz";
+console.log(`For input "${input}", output is: ${new InverseFizzBuzzAlgorithm(input).execute()}`);
