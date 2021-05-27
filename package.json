@@ -6,10 +6,10 @@
   "scripts": {
     "start": "ts-node ./src/index.ts",
     "test": "jest",
-    "lint": "eslint src/**/*",
-    "lint:fix": "eslint src/**/* --fix",
-    "prettier:check": "npx prettier --check",
-    "prettier:write": "npx prettier --write"
+    "lint": "eslint {src,test}/**/*.ts",
+    "lint:fix": "eslint {src,test}/**/*.ts --fix",
+    "prettier:check": "npx prettier --check {src,test}/**/*.ts",
+    "prettier:write": "npx prettier --write {src,test}/**/*.ts"
   },
   "repository": {
     "type": "git",
