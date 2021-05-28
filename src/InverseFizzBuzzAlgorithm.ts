@@ -16,13 +16,11 @@ export class InverseFizzBuzzAlgorithm {
   private static isCorrectTokenList(
     fizzBuzzTokens: string[]
   ): fizzBuzzTokens is FizzBuzzToken[] {
-    const possibleElements = ["fizz", "buzz", "fizzbuzz"];
-    for (const token of fizzBuzzTokens) {
-      if (!possibleElements.includes(token)) {
-        return false;
-      }
-    }
-    return true;
+    return fizzBuzzTokens.reduce(
+      (isCorrect: boolean, token: string) =>
+        isCorrect && ["fizz", "buzz", "fizzbuzz"].includes(token),
+      true
+    );
   }
 
   public execute(): number[] {
@@ -44,14 +42,9 @@ export class InverseFizzBuzzAlgorithm {
   }
 
   private getFizzBuzzToken(number: number): FizzBuzzToken | "" {
-    let returnValue = "";
-    if (number % 3 === 0) {
-      returnValue += "fizz";
-    }
-    if (number % 5 === 0) {
-      returnValue += "buzz";
-    }
-    return returnValue as FizzBuzzToken | "";
+    return `${number % 3 === 0 ? "fizz" : ""}${
+      number % 5 === 0 ? "buzz" : ""
+    }` as FizzBuzzToken | "";
   }
 
   // this is the heart of the algorithm: in here we look for all the possible
@@ -124,16 +117,11 @@ export class InverseFizzBuzzAlgorithm {
     return matchingSublist;
   }
 
-  private getShortestSublist(matchingSublists: number[][]) {
-    if (matchingSublists.length == 0) return [];
-
-    let sublistToReturn: number[] = matchingSublists[0];
-    for (const matchingSublist of matchingSublists) {
-      if (matchingSublist.length < sublistToReturn.length) {
-        sublistToReturn = matchingSublist;
-      }
-    }
-
-    return sublistToReturn;
+  private getShortestSublist(matchingSublists: number[][]): number[] {
+    return matchingSublists.reduce(
+      (shortest, current) =>
+        (shortest = current.length < shortest.length ? current : shortest),
+      matchingSublists[0] || []
+    );
   }
 }
