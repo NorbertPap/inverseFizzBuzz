@@ -97,7 +97,7 @@ export class InverseFizzBuzzAlgorithm {
       if (currentToken === "") {
         // if we're already in the process of finding a match, let's put the numbers in the sequence
         // that have an empty token since they don't change the fizzbuzz output
-        if (matchingSublist !== []) {
+        if (matchingSublist.length !== 0) {
           matchingSublist.push(
             numbersAndTokensList[starterIndex + j][numberIndex]
           );
